@@ -19,10 +19,12 @@ type Validity = Int -> Int -> Bool
 type Operation = Int -> Int -> Int
 
 validityAdd, validitySub, validityMul, validityDiv :: Validity
-validityAdd = const (const True)
-validitySub = const (const True)
-validityMul = const (const True)
-validityDiv = const (0 /=)
+validityAdd _ _ = True
+validitySub = (>)
+validityMul a b =
+  let nonTrivial k = (k /= 1) || (k /= 0)
+  in  nonTrivial a && nonTrivial b
+validityDiv a b = b /= 0 && a `mod` b == 0
 
 semantics :: Operator -> (String, Operation, Validity)
 semantics Add = ("+", (+), validityAdd)
