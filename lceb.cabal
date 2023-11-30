@@ -1,0 +1,56 @@
+cabal-version:      2.2
+name:               lceb
+version:            0.1.0.0
+
+author:             Léana 江
+maintainer:         leana.jiang@icloud.com
+
+library
+  default-language: Haskell2010
+  hs-source-dirs:   src
+  build-depends:
+    , base          >= 4.7 && <5
+  ghc-options:      -Wall
+                    -Wcompat
+                    -Widentities
+                    -Wincomplete-record-updates
+                    -Wincomplete-patterns
+                    -Wincomplete-uni-patterns
+                    -Wredundant-constraints
+  exposed-modules:
+    Combinations
+
+executable lceb-bin
+  default-language: Haskell2010
+  hs-source-dirs:   src
+  main-is:          Main.hs
+  build-depends:
+    , base          >= 4.7 && <5
+    , lceb
+  ghc-options:      -Wall
+                    -Wcompat
+                    -Widentities
+                    -Wincomplete-record-updates
+                    -Wincomplete-patterns
+                    -Wincomplete-uni-patterns
+                    -Wredundant-constraints
+
+test-suite lceb-spec
+  type:             exitcode-stdio-1.0
+  main-is:          Spec.hs
+  hs-source-dirs:   test
+  default-language: Haskell2010
+  other-modules:
+  build-depends:
+    , base          >= 4.7 && <5
+    , hspec         >= 2.10
+    , QuickCheck    >= 2.14
+    , lceb
+  ghc-options:      -Wall
+                    -Wcompat
+                    -Widentities
+                    -Wincomplete-record-updates
+                    -Wincomplete-patterns
+                    -Wincomplete-uni-patterns
+                    -Wredundant-constraints
+
